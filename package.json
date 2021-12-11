@@ -1,0 +1,44 @@
+{
+  "name": "notifications-api",
+  "version": "1.0.0",
+  "description": "Notification services.",
+  "main": "server/app.js",
+  "scripts": {
+    "test": "NODE_ENV=test nyc mocha --require @babel/register --require dotenv/config \"tests/**/*.js\" --exit",
+    "start": "babel-node ./server/app.js",
+    "dev": "nodemon --exec babel-node ./server/app.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AJAkimana/notifications-api.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Akimana JA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AJAkimana/notifications-api/issues"
+  },
+  "homepage": "https://github.com/AJAkimana/notifications-api#readme",
+  "dependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/node": "^7.2.2",
+    "@babel/polyfill": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/register": "^7.5.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^6.2.2",
+    "nyc": "^14.1.1"
+  }
+}
