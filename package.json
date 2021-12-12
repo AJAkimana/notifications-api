@@ -4,7 +4,7 @@
   "description": "Notification services.",
   "main": "server/app.js",
   "scripts": {
-    "test": "NODE_ENV=test nyc mocha --require @babel/register --require dotenv/config \"tests/**/*.js\" --exit",
+    "test": "NODE_ENV=test nyc mocha --require @babel/register \"tests/**/*.js\" --exit",
     "start": "babel-node ./server/app.js",
     "dev": "nodemon --exec babel-node ./server/app.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
@@ -37,6 +37,7 @@
     "lodash": "^4.17.15"
   },
   "devDependencies": {
+    "babel-plugin-transform-runtime": "^6.23.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "mocha": "^6.2.2",

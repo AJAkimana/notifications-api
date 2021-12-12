@@ -44,6 +44,45 @@ Run local tests:
 $ npm run test
 ```
 
+## API Specs:
+
+### Request a token.
+
+POST `api/notifications/request`.  
+request body:
+
+```
+{
+    "usernames":"Client name",
+    "email":"the.client@email",
+    "website":"client.website"
+}
+```
+
+### Approve or reject a request.
+
+POST `api/notifications/activate/{The request id}`.  
+request body:
+
+```
+{
+	"status":"REJECTED|APPROVED",
+}
+```
+
+### Send a notification.
+
+POST `api/notifications/send?clientToken={The activated client token}`.  
+request body:
+
+```
+{
+    "to":"{Receiver email or phone number}",
+    "body":"{A body of the notification}",
+    "type":"EMAIL|SMS"
+}
+```
+
 ## The current maintainer:
 
 [Akimana Jean D'Amour](https://github.com/AJAkimana)
