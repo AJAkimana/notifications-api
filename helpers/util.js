@@ -37,3 +37,17 @@ export const writeJSONFile = (filename, content) => {
     }
   });
 };
+
+/**
+ *
+ * @param {Object} error Generated error from Joi validation
+ */
+export const getErrorMessage = (error) => {
+  const errors = [];
+  const errorDetails = error.details;
+
+  for (let i = 0; i < errorDetails.length; i += 1) {
+    errors.push(errorDetails[i].message.split('"').join(""));
+  }
+  return errors[0];
+};

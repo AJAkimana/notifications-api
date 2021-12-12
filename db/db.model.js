@@ -1,8 +1,6 @@
 import { v4 as uuidV4 } from "uuid";
 import { dataToJson, writeJSONFile } from "../helpers";
 
-const mockedProducts = `${__dirname}/../mocks/mocked_products.json`;
-
 export class DbHelper {
   data = [];
   constructor(fileData) {
@@ -15,17 +13,17 @@ export class DbHelper {
    * @param {*} conditions COnditions to be checking
    * @returns Records match the conditions
    */
-  findAll(conditions = {}) {
+  findAll(conditions) {
     return this.data.filter(conditions);
   }
 
   /**
    *
-   * @param {*} id Record Id
+   * @param {Function} conditions A condition-like function
    * @returns One record
    */
-  findById(id = "") {
-    return this.data.find((item) => (item.id = id));
+  findOne(conditions) {
+    return this.data.find(conditions);
   }
 
   /**
@@ -49,11 +47,11 @@ export class DbHelper {
   /**
    *
    * @param {*} info update data
-   * @param {*} id Id to be updated
+   * @param {Function} conditions A condition-like function
    * @returns New updated data
    */
-  update(info = {}, id) {
-    const recordIndex = this.data.findIndex((record) => record.id === id);
+  update(info = {}, conditions) {
+    const recordIndex = this.data.findIndex(conditions);
     for (const key in info) {
       this.data[recordIndex][key] = info[key];
     }
