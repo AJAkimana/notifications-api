@@ -65,7 +65,7 @@ export const isNoticationValid = async (req, res, next) => {
   const schema = Joi.object({
     to: Joi.string().required(),
     body: Joi.string().required(),
-    type: Joi.string().valid(["SMS", "EMAIL"]).required(),
+    type: Joi.string().valid("SMS", "EMAIL").required(),
   });
   const { error } = schema.validate(req.body);
 
