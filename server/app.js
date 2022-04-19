@@ -5,7 +5,7 @@ import cluster from "cluster";
 import expressSession from "express-session";
 import os from "os";
 import routes from "../routes";
-import { monitorDevActions, handleErrors } from "../middlewares";
+import { monitorDevActions, handleErrors, appThrottle } from "../middlewares";
 
 dotenv.config();
 
@@ -29,6 +29,7 @@ app.use(
     cookie: { path: "/", httpOnly: true, secure: false, maxAge: weeks },
   })
 );
+app.use(appThrottle);
 app.use(monitorDevActions);
 if (cluster.isPrimary) {
   console.log(`Number of CPUs is ${numCPUs}`);
